@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlogMasterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbBlogNews">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="newsTitle" Type="varchar" MaxLength="20" />
+          <Property Name="newsContent" Type="nvarchar(max)" />
+          <Property Name="newsContentJson" Type="nvarchar(max)" />
+          <Property Name="newsCreateDate" Type="datetime" />
+          <Property Name="newsUpdateDate" Type="datetime" />
+          <Property Name="newsPicture" Type="varchar" MaxLength="256" />
+          <Property Name="newsStatus" Type="varchar" MaxLength="1" />
+          <Property Name="newsDel" Type="bit" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbUser">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="20" />
+          <Property Name="userPassword" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="256" />
+          <Property Name="Lastname" Type="varchar" MaxLength="256" />
+          <Property Name="Citizen_ID" Type="varchar" MaxLength="13" />
+          <Property Name="Birth" Type="datetime" />
+          <Property Name="Sex" Type="char" MaxLength="1" />
+          <Property Name="Address" Type="varchar" MaxLength="512" />
+          <Property Name="PROVINCE_ID" Type="int" />
+          <Property Name="AMPHUR_ID" Type="int" />
+          <Property Name="DISTRICT_ID" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="Picture" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK_tbBlogNews_userID">
+          <End Role="tbUser" Type="Self.tbUser" Multiplicity="1" />
+          <End Role="tbBlogNews" Type="Self.tbBlogNews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUser">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="tbBlogNews">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogMasterDBModelStoreContainer">
+          <EntitySet Name="tbBlogNews" EntityType="Self.tbBlogNews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUser" EntityType="Self.tbUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbBlogNews_userID" Association="Self.FK_tbBlogNews_userID">
+            <End Role="tbUser" EntitySet="tbUser" />
+            <End Role="tbBlogNews" EntitySet="tbBlogNews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlogMasterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbBlogNew">
+          <Key>
+            <PropertyRef Name="newsID" />
+          </Key>
+          <Property Name="newsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="newsTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="newsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="newsContentJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="newsCreateDate" Type="DateTime" Precision="3" />
+          <Property Name="newsUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="newsPicture" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="newsStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="newsDel" Type="Boolean" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbUser" Relationship="Self.FK_tbBlogNews_userID" FromRole="tbBlogNews" ToRole="tbUser" />
+        </EntityType>
+        <EntityType Name="tbUser">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Citizen_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Birth" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="PROVINCE_ID" Type="Int32" />
+          <Property Name="AMPHUR_ID" Type="Int32" />
+          <Property Name="DISTRICT_ID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbBlogNews" Relationship="Self.FK_tbBlogNews_userID" FromRole="tbUser" ToRole="tbBlogNews" />
+        </EntityType>
+        <Association Name="FK_tbBlogNews_userID">
+          <End Role="tbUser" Type="Self.tbUser" Multiplicity="1" />
+          <End Role="tbBlogNews" Type="Self.tbBlogNew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUser">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="tbBlogNews">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogMasterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbBlogNews" EntityType="Self.tbBlogNew" />
+          <EntitySet Name="tbUsers" EntityType="Self.tbUser" />
+          <AssociationSet Name="FK_tbBlogNews_userID" Association="Self.FK_tbBlogNews_userID">
+            <End Role="tbUser" EntitySet="tbUsers" />
+            <End Role="tbBlogNews" EntitySet="tbBlogNews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlogMasterDBModelStoreContainer" CdmEntityContainer="BlogMasterDBEntities">
+          <EntitySetMapping Name="tbBlogNews">
+            <EntityTypeMapping TypeName="BlogMasterDBModel.tbBlogNew">
+              <MappingFragment StoreEntitySet="tbBlogNews">
+                <ScalarProperty Name="newsID" ColumnName="newsID" />
+                <ScalarProperty Name="newsTitle" ColumnName="newsTitle" />
+                <ScalarProperty Name="newsContent" ColumnName="newsContent" />
+                <ScalarProperty Name="newsContentJson" ColumnName="newsContentJson" />
+                <ScalarProperty Name="newsCreateDate" ColumnName="newsCreateDate" />
+                <ScalarProperty Name="newsUpdateDate" ColumnName="newsUpdateDate" />
+                <ScalarProperty Name="newsPicture" ColumnName="newsPicture" />
+                <ScalarProperty Name="newsStatus" ColumnName="newsStatus" />
+                <ScalarProperty Name="newsDel" ColumnName="newsDel" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsers">
+            <EntityTypeMapping TypeName="BlogMasterDBModel.tbUser">
+              <MappingFragment StoreEntitySet="tbUser">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Citizen_ID" ColumnName="Citizen_ID" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PROVINCE_ID" ColumnName="PROVINCE_ID" />
+                <ScalarProperty Name="AMPHUR_ID" ColumnName="AMPHUR_ID" />
+                <ScalarProperty Name="DISTRICT_ID" ColumnName="DISTRICT_ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
