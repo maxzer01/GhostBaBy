@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/PageIndex.css" />
 
     <script type="text/javascript" src="Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/swiper-bundle.min.js"></script>
 
 </head>
 <body>
@@ -95,10 +96,10 @@
             <section class="section ghostmember" id="ghostmember">
                 <h2 class="section__title">Ghost Menber</h2>
 
-                <div class="ghostmember__container container grid">
+                <div class="ghostmember__container container grid" id="GhostMemberList">
 
-                    <div class="ghostmember__content">
-                        <img src="Image/post-img1.png" alt="" class="ghostmember__img" />
+                    <%--<div class="ghostmember__content">
+                        <img src="image/post-img1.png" alt="" class="ghostmember__img" />
                         <h3 class="ghostmember_title">LOKII</h3>
                         <span class="ghostmember_subtitle">Co-founder and father of the Baby Ghosts</span>
 
@@ -113,45 +114,8 @@
                                 <i class="ri-messenger-fill"></i>
                             </a>
                         </div>
-                    </div>
-
-                    
-                    <div class="ghostmember__content">
-                        <img src="Image/post-img2.png" alt="" class="ghostmember__img" />
-                        <h3 class="ghostmember_title">LOKII</h3>
-                        <span class="ghostmember_subtitle">Co-founder and father of the Baby Ghosts</span>
-
-                        <div class="ghostmember__icon">
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-file-edit-line"></i>
-                            </a>
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-discord-fill"></i>
-                            </a>
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-messenger-fill"></i>
-                            </a>
-                        </div>
-                    </div>
-
-
-                    <div class="ghostmember__content">
-                        <img src="Image/post-img3.png" alt="" class="ghostmember__img" />
-                        <h3 class="ghostmember_title">LOKII</h3>
-                        <span class="ghostmember_subtitle">Co-founder and father of the Baby Ghosts</span>
-
-                        <div class="ghostmember__icon">
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-file-edit-line"></i>
-                            </a>
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-discord-fill"></i>
-                            </a>
-                            <a href="#" class="ghostmember__icon-link">
-                                <i class="ri-messenger-fill"></i>
-                            </a>
-                        </div>
-                    </div>
+                    </div>--%>
+                  
                     
 
                 </div>
@@ -324,7 +288,6 @@
 
 
     <script type="text/javascript" src="js/PageIndex.js"></script>
-    <script type="text/javascript" src="Scripts/swiper-bundle.min.js"></script>
 
 
 

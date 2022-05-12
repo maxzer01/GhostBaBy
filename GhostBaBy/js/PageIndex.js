@@ -50,13 +50,16 @@ $(document).ready(function () {
     });
 
 
-
     window.addEventListener('scroll', scrollUp);
 
     window.addEventListener('scroll', scrollActive);
 
-
     checkLogin();
+
+
+
+
+    LoadGhostMember();
 
 });
 
@@ -125,7 +128,30 @@ function checkLogin() {
     if (myParam != null) {
         $("#btnLogin").html(myParam);
     }
+}
 
 
+
+function LoadGhostMember() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('userName');
+
+    $.ajax({
+        type: 'get',
+        url: '/PageIndex/api/GetGhostMember?userName=' + myParam + '&ID=',
+        contentType: 'application/json',
+        success: function (response) {
+            var myobj = JSON.parse(response);
+            console.log(myobj);
+
+            var html = "";
+            $.each(myobj, function (index, value) {
+                html += '<div class="ghostmember__content"><img src="' + value.newsPicture + '" alt="" class="ghostmember__img" /><h3 class="ghostmember_title">' + value.newsTitle + '</h3><span class="ghostmember_subtitle">' + value.newsContent + '</span><div class="ghostmember__icon"><a href="#" class="ghostmember__icon-link"><i class="ri-file-edit-line"></i></a><a href="#" class="ghostmember__icon-link"><i class="ri-discord-fill"></i></a><a href="#" class="ghostmember__icon-link"><i class="ri-messenger-fill"></i></a></div></div>';
+            });
+
+            $('#GhostMemberList').html(html);
+
+        },
+    });
 
 }

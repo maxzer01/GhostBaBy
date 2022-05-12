@@ -68,7 +68,7 @@ $("#btn-login").click(function () {
             var Check = Object.values(d).indexOf('Success');
             var result = Object.values(d);
             var userName = result[2];
-            var link = "/PageIndex?userName=" + userName;
+            var link = "/PageIndex?userName=" + userName + "&ID=";
 
             if (Check > -1) {
                 window.location = link;

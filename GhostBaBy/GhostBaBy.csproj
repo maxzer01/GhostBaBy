@@ -165,12 +165,12 @@
       <DependentUpon>DB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Image\post-img1.png" />
-    <Content Include="Image\post-img2.png" />
-    <Content Include="Image\post-img3.png" />
-    <Content Include="Image\post-img4.png" />
-    <Content Include="Image\post-img5.png" />
-    <Content Include="Image\post-img6.png" />
+    <Content Include="image\post-img1.png" />
+    <Content Include="image\post-img2.png" />
+    <Content Include="image\post-img3.png" />
+    <Content Include="image\post-img4.png" />
+    <Content Include="image\post-img5.png" />
+    <Content Include="image\post-img6.png" />
     <Content Include="img\bg13.png" />
     <Content Include="img\bghalloween.png" />
     <Content Include="img\category1-img.png" />
@@ -256,6 +256,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\GhostMemberController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Database\DB.Context.cs">
@@ -290,6 +291,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomListItem.cs" />
+    <Compile Include="Models\GhostListData.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ResultApi.cs" />
     <Compile Include="Models\UserData.cs" />
